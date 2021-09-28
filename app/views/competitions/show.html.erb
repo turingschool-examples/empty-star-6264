@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Winter Classic</title>
+  </head>
+
+  <body>
+    <% @competition.teams.each do |team| %>
+      Team: <%= team.hometown %>
+      <%= team.nickname %><br>
+    <% end %>
+    <% sum = @competition.teams.sum do |team| %>
+      <% team.players.sum do |player| %>
+        <% player.age %>
+      <% end %>
+    <% end %>
+    Average Age: <%= sum / @competition.players.length %>
+  </body>
+</html>
