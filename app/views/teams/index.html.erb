@@ -8,6 +8,10 @@
     <% @teams.each do |team| %>
       Hometown: <%= team.hometown %>,
       Nickname: <%= team.nickname %><br>
+      <% team.players.each do |player| %>
+        Player: <%= player.name %>
+        Age: <%= player.age %>
+      <% end %><br>
     <% end %>
   </body>
 </html>

@@ -22,4 +22,13 @@ RSpec.describe 'team index page' do
       expect(page).to have_content(team.nickname)
     end
   end
+
+  it 'lists all players for each team' do
+    Team.all.each do |team|
+      team.players.each do |player|
+        expect(page).to have_content(player.name)
+        expect(page).to have_content(player.age)
+      end
+    end
+  end
 end
