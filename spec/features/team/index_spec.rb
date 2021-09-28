@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'team index'
+RSpec.describe 'team index' do
  before do
    @competition_1 = Competition.create!(name: 'comp1', location: 'location1', sport: 'sport1')
    @competition_2 = Competition.create!(name: 'comp2', location: 'location2', sport: 'sport2')
@@ -63,30 +63,6 @@ RSpec.describe 'team index'
     within("#flight-#{@flight_2.id}") do
       expect(page).to have_content(@passenger_3.name)
       expect(page).to have_content(@passenger_4.name)
-    end
-  end
-
-  it 'next to each passenger name I see a link to remove that passenger from that flight' do
-    within("#flight-#{@flight_1.id}") do
-      expect(page).to have_link("Remove #{@passenger_1.name} from flight")
-      expect(page).to have_link("Remove #{@passenger_2.name} from flight")
-    end
-    within("#flight-#{@flight_2.id}") do
-      expect(page).to have_link("Remove #{@passenger_3.name} from flight")
-      expect(page).to have_link("Remove #{@passenger_4.name} from flight")
-    end
-  end
-
-  it 'when i click on link, im returned to index page and no longer see passenger' do
-    within("#flight-#{@flight_1.id}") do
-      click_link("Remove #{@passenger_1.name} from flight")
-
-      expect(page).not_to have_content(@passenger_1.name)
-    end
-    within("#flight-#{@flight_2.id}") do
-      click_link("Remove #{@passenger_3.name} from flight")
-
-      expect(page).not_to have_content(@passenger_3.name)
     end
   end
 end
