@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Teams</title>
+  </head>
+
+  <body>
+    <% @teams.each do |team| %>
+      Hometown: <%= team.hometown %>,
+      Nickname: <%= team.nickname %><br>
+    <% end %>
+  </body>
+</html>
