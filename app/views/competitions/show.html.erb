@@ -5,7 +5,7 @@
   </head>
 
   <body>
-    <%= form_with model: @team, method: :post, local: true do |form| %>
+    <%= form_with method: :post, local: true do |form| %>
       <%= form.label      :nickname %>
       <%= form.text_field :nickname %>
       <%= form.submit     'Submit' %>

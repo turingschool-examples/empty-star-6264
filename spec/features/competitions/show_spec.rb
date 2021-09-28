@@ -37,7 +37,6 @@ RSpec.describe 'competitions show page' do
     fill_in "Nickname", with: (@team_3.nickname)
     click_on "Submit"
     expect(current_path).to eq("/competitions/#{@comp_1.id}")
-    save_and_open_page
     expect(page).to have_content(@team_3.nickname)
   end
 end
