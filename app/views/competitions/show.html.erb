@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Winter Classic</title>
+  </head>
+
+  <body>
+    <%= form_with method: :post, local: true do |form| %>
+      <%= form.label      :nickname %>
+      <%= form.text_field :nickname %>
+      <%= form.submit     'Submit' %>
+    <% end %>
+    <% @competition.teams.each do |team| %>
+      Team: <%= team.hometown %>
+      <%= team.nickname %><br>
+    <% end %>
+    <% sum = @competition.teams.sum do |team| %>
+      <% team.players.sum do |player| %>
+        <% player.age %>
+      <% end %>
+    <% end %>
+    Average Age: <%= sum / (@competition.players.length).to_f %>
+  </body>
+</html>
