@@ -5,6 +5,11 @@
   </head>
 
   <body>
+    <%= form_with model: @team, method: :post, local: true do |form| %>
+      <%= form.label      :nickname %>
+      <%= form.text_field :nickname %>
+      <%= form.submit     'Submit' %>
+    <% end %>
     <% @competition.teams.each do |team| %>
       Team: <%= team.hometown %>
       <%= team.nickname %><br>
@@ -14,6 +19,6 @@
         <% player.age %>
       <% end %>
     <% end %>
-    Average Age: <%= sum / @competition.players.length %>
+    Average Age: <%= sum / (@competition.players.length).to_f %>
   </body>
 </html>

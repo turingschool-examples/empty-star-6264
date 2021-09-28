@@ -8,7 +8,7 @@ RSpec.describe 'competitions show page' do
 
     @player_1 = @team_1.players.create!(name: "John", age: 19)
     @player_2 = @team_1.players.create!(name: "Bob", age: 21)
-    @player_3 = @team_2.players.create!(name: "Steve", age: 18)
+    @player_3 = @team_2.players.create!(name: "Steve", age: 16)
     @player_4 = @team_2.players.create!(name: "Kurt", age: 22)
     @player_5 = @team_3.players.create!(name: "Brian", age: 12)
     @player_6 = @team_3.players.create!(name: "Tyler", age: 8)
@@ -30,6 +30,14 @@ RSpec.describe 'competitions show page' do
   end
 
   it 'gives the average age of all players in competition' do
-    expect(page).to have_content("Average Age: 20")
+    expect(page).to have_content("Average Age: 19.5")
+  end
+
+  it 'registers a new team' do
+    fill_in "Nickname", with: (@team_3.nickname)
+    click_on "Submit"
+    expect(current_path).to eq("/competitions/#{@comp_1.id}")
+    save_and_open_page
+    expect(page).to have_content(@team_3.nickname)
   end
 end
